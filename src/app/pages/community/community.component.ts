@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { APIService } from '../../database/api.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-community',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommunityComponent implements OnInit {
 
-  constructor() { }
+  public loading:boolean = false;
+  docs:Observable<any>;
+  constructor(public API:APIService) { }
 
   ngOnInit() {
+    this.docs = this.API.getContacts();
+  }
+
+  delete({id}){
+   if(confirm('¿Está seguro?')){
+     this.API.deleteContact(id)
+      .then(success =>{  
+        this.loading = false;
+      })
+      .catch(err=>{
+        alert(err);
+      })
+   }
   }
 
 }

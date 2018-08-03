@@ -6,7 +6,7 @@ import { PagenotfoundComponent } from "./shared/pagenotfound/pagenotfound.compon
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
-    { path: 'community', component: CommunityComponent },
+    { path: 'contacts', component: CommunityComponent },
     { path: 'generator', component: GeneratorComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: PagenotfoundComponent}

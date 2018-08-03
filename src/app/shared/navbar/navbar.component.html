@@ -1,31 +1,57 @@
 <!-- Image and text -->
 <mdb-navbar SideClass="navbar navbar-expand-lg  navbar-dark red">
-  <mdb-navbar-brand>
-      <a class="navbar-brand" href="#">
-          <img src="../../../assets/img/cvgen.png" height="80" class="d-inline-block align-top" alt="">
-      </a>
-  </mdb-navbar-brand>
-  <links>
-    <ul class="navbar-nav mr-auto">
-        <li routerLinkActive="active" (click)="showSearchBar = false" class="nav-item">
-            <a routerLink="/home"  class="nav-link waves-light" mdbWavesEffect>Home </a>
+    <mdb-navbar-brand>
+        <a class="navbar-brand" href="#">
+            <img src="../../../assets/img/cvgen.png" height="80" class="d-inline-block align-top" alt="">
+        </a>
+    </mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li routerLinkActive="active" (click)="showSearchBar = false" class="nav-item">
+                <a routerLink="/home" class="nav-link waves-light" mdbWavesEffect>Home </a>
+            </li>
+            <li routerLinkActive="active" (click)="showSearchBar = false" class="nav-item">
+                <a routerLink="/generator" class="nav-link waves-light" mdbWavesEffect>Generador</a>
+            </li>
+            <li *ngIf="accessed" routerLinkActive="active"  (click)="showSearchBar = true" class="nav-item">
+            <a routerLink="/contacts"  class="nav-link waves-light" mdbWavesEffect>Contactos</a>
         </li>
-        <li routerLinkActive="active" (click)="showSearchBar = false" class="nav-item">
-            <a routerLink="/generator"  class="nav-link waves-light" mdbWavesEffect>Generador</a>
-        </li>
-        <li routerLinkActive="active"  (click)="showSearchBar = true" class="nav-item">
-            <a routerLink="/community"  class="nav-link waves-light" mdbWavesEffect>Comunidad</a>
-        </li>
-        <li class="nav-item">
-            <a href="https://github.com/Dwigth/cvgen"  class="nav-link waves-light" mdbWavesEffect><mdb-icon icon="github" ></mdb-icon></a>
-        </li>
-    </ul>
-                
-                <form class="form-inline " >                  
-                    <div class="md-form mt-0" mdbWavesEffect>
-                        <input *ngIf="showSearchBar" class="form-control mr-sm-2  waves-light" type="text" placeholder="Buscar">
-                    </div>
-                    <img src="../../../assets/img/user.jpg" width="50" class="rounded-circle float-right" alt="...">
-                </form>
-</links>
+            <li class="nav-item">
+                <a href="https://github.com/Dwigth/cvgen" class="nav-link waves-light" mdbWavesEffect>
+                    <mdb-icon icon="github"></mdb-icon>
+                </a>
+            </li>
+        </ul>
+
+        <form *ngIf="accessed" class="form-inline ">
+            <!-- <div class="md-form mt-0" mdbWavesEffect>
+                <input *ngIf="showSearchBar" class="form-control mr-sm-2  waves-light" type="text" placeholder="Buscar">
+            </div> -->
+            <!-- <img src="../../../assets/img/user.jpg" width="50" class="rounded-circle float-right" alt="..."> -->
+        
+            <blockquote class="blockquote" style="padding: .25rem 0">
+                <p class="mb-0 white-text">{{email}}</p>
+            </blockquote>
+
+        </form>
+
+        <div *ngIf="!accessed" class="nav-item">
+
+            <form class="px-4 py-3">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <input type="text" style="padding: .25rem;margin: .25rem;" [(ngModel)]="email" placeholder="Correo" name="email" id="">
+                        <br>
+                        <input type="password" style="padding: .25rem;margin: .25rem;" [(ngModel)]="pass" placeholder="Super secreto" name="pass"
+                            id=""> </li>
+                    <li class="list-inline-item">
+                        <button (click)="check()" type="submit" class="btn btn-primary">Entrar</button>
+                    </li>
+                </ul>
+
+            </form>
+        </div>
+
+
+    </links>
 </mdb-navbar>

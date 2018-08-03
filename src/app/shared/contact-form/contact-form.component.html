@@ -1,0 +1,37 @@
+<!-- Default form contact -->
+<form *ngIf="!loading" #f="ngForm" (ngSubmit)="onSubmit(f)" class="text-center border border-light p-2">
+
+  <p class="h4 mb-2">Contactanos</p>
+
+  <!-- Name -->
+  <input name="nombre" ngModel required #nombre="ngModel" type="text" id="defaultContactFormName" class="form-control mb-2" placeholder="Nombre">
+
+  <!-- Email -->
+  <input name="email" ngModel required #email="ngModel" type="email" id="defaultContactFormEmail" class="form-control mb-2" placeholder="E-mail">
+
+  <!-- Subject -->
+  <label>Tema</label>
+  <select name="tema" ngModel required #tema="ngModel" class="browser-default custom-select mb-2">
+      <option value="" disabled>Escoge una opción</option>
+      <option value="1" selected>Retro-alimentación</option>
+      <option value="2">Reportar un bug</option>
+      <option value="3">Solicitar una función</option>
+  </select>
+
+  <!-- Message -->
+  <div class="form-group">
+      <textarea name="mensaje" ngModel required #mensaje="ngModel" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Mensaje"></textarea>
+  </div>
+
+  <!-- Copy -->
+  <!-- <div class="custom-control custom-checkbox mb-4">
+      <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+      <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
+  </div> -->
+
+  <!-- Send button -->
+  <button class="btn btn-info btn-block" type="submit">Enviar</button>
+
+</form>
+<app-loading *ngIf="loading"></app-loading>
+<!-- Default form contact -->

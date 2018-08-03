@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
+
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -9,7 +11,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { appRoutes } from './app.routes';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { environment } from '../environments/environment';
-import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CommunityComponent } from './pages/community/community.component';
@@ -20,6 +21,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
 import { ImgLoaderComponent } from './shared/img-loader/img-loader.component';
+import { ContactFormComponent } from './shared/contact-form/contact-form.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 //firebase config
 
@@ -33,7 +36,9 @@ import { ImgLoaderComponent } from './shared/img-loader/img-loader.component';
     NavbarComponent,
     FooterComponent,
     PagenotfoundComponent,
-    ImgLoaderComponent
+    ImgLoaderComponent,
+    ContactFormComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
