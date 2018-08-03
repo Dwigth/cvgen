@@ -26,6 +26,14 @@ export class GeneratorComponent implements OnInit {
   public pasatiempos: string[] = [];
   public habilidades: string[] = [];
 
+  /**HTML local var */
+  lidiomas;
+  lihsoft;
+  liper;
+  edu;
+  experience;
+  habi;
+  pas;
   @ViewChild('contenido') contenido: ElementRef;
 
 
