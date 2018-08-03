@@ -7,13 +7,13 @@
   </mdb-navbar-brand>
   <links>
     <ul class="navbar-nav mr-auto">
-        <li routerLinkActive="active" class="nav-item">
+        <li routerLinkActive="active" (click)="showSearchBar = false" class="nav-item">
             <a routerLink="/home"  class="nav-link waves-light" mdbWavesEffect>Home </a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
+        <li routerLinkActive="active" (click)="showSearchBar = false" class="nav-item">
             <a routerLink="/generator"  class="nav-link waves-light" mdbWavesEffect>Generador</a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
+        <li routerLinkActive="active"  (click)="showSearchBar = true" class="nav-item">
             <a routerLink="/community"  class="nav-link waves-light" mdbWavesEffect>Comunidad</a>
         </li>
         <li class="nav-item">
@@ -23,7 +23,7 @@
                 
                 <form class="form-inline " >                  
                     <div class="md-form mt-0" mdbWavesEffect>
-                        <input class="form-control mr-sm-2  waves-light" type="text" placeholder="Buscar">
+                        <input *ngIf="showSearchBar" class="form-control mr-sm-2  waves-light" type="text" placeholder="Buscar">
                     </div>
                     <img src="../../../assets/img/user.jpg" width="50" class="rounded-circle float-right" alt="...">
                 </form>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { 
-   }
-  
-  ngOnInit() {
-  }
+  public showSearchBar:boolean = false;
 
+  constructor() { }
+
+  ngOnInit() { }
+
+  
 }

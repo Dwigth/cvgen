@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 
+# Possible github warnings
+package-lock.json
+
 # dependencies
 /node_modules
 
@@ -38,5 +41,3 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Possible github warnings
-package-lock.json

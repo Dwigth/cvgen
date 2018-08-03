@@ -9,7 +9,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { appRoutes } from './app.routes';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { environment } from '../environments/environment';
-
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CommunityComponent } from './pages/community/community.component';
@@ -42,6 +42,8 @@ import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.compon
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     RouterModule.forRoot(appRoutes),
     MDBBootstrapModule.forRoot(),
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
