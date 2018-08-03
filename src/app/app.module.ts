@@ -19,6 +19,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
+import { ImgLoaderComponent } from './shared/img-loader/img-loader.component';
 
 //firebase config
 
@@ -31,7 +32,8 @@ import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.compon
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    ImgLoaderComponent
   ],
   imports: [
     BrowserModule,

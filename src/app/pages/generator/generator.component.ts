@@ -9,14 +9,14 @@ import * as html2canvas from 'html2canvas';
 })
 export class GeneratorComponent implements OnInit {
 
-  public nombre:string = '';
-  public apellidos:string = '';
-  public direccion:string = '';
-  public contacto:string = '';
-  public fechanacimieno:string = '';
-  public objetivo:string = '';
+  public nombre: string = '';
+  public apellidos: string = '';
+  public direccion: string = '';
+  public contacto: string = '';
+  public fechanacimieno: string = '';
+  public objetivo: string = '';
   public img: string = '../../../assets/img/user.jpg';
-  
+
   public contactos: string[] = [];
   public idiomas: string[] = [];
   public hsoft: string[] = [];
@@ -67,6 +67,27 @@ export class GeneratorComponent implements OnInit {
 
   }
 
+  saveDoc() {
+    const userData = {
+      nombre: this.nombre,
+      apellidos: this.apellidos,
+      direccion: this.direccion,
+      contacto: this.contacto,
+      fechanacimieno: this.fechanacimieno,
+      objetivo: this.objetivo,
+      img: this.img,
+      idiomas: this.idiomas,
+      hsoft: this.hsoft,
+      personalidad: this.personalidad,
+      exp: this.exp,
+      educacion: this.educacion,
+      pasatiempos: this.pasatiempos,
+      habilidades: this.habilidades,
+    }
+    console.log(userData);
+    
+  }
+
   downloadPDF() {
     // let doc = new jsPDF();
     // let specialElementHandlers = {
@@ -86,7 +107,7 @@ export class GeneratorComponent implements OnInit {
     html2canvas(document.getElementById('contenido')).then((canvas) => {
       var img = canvas.toDataURL("image/png");
       var doc = new jsPDF();
-      doc.addImage(img, 'JPEG', 5, 20);
+      doc.addImage(img, 'JPEG', 0, 0);
       doc.save(`${this.nombre}.pdf`);
     });
 
