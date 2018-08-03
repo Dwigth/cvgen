@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div  class="container-fluid">
   <div class="row">
     <div class="col-4" style="width: 100%;height:900px;overflow-y: scroll;background-color: gainsboro;">
       <h3>Personal</h3>
@@ -90,7 +90,7 @@
 
         <div *ngFor="let personal of personalidad; let i = index;">
           <div class="md-form">
-            <input mdbInputDirective type="text" (keyup)="allocateValue($event,personalidad,i,'personalidad')" class="form-control">            
+            <input mdbInputDirective type="text" (keyup)="allocateValue($event,personalidad,i,'personalidad')" class="form-control">
             <label for="{{i}}">Personalidad</label>
           </div>
         </div>
@@ -98,54 +98,109 @@
 
         <!-- Objetivo -->
         <div class="md-form">
-            <textarea mdbInputDirective type="text" id="formobj" name="objetivo" [(ngModel)]="objetivo" class="md-textarea form-control" rows="3" ></textarea>
-            <label for="formobj">Objetivo</label>
-          </div>
+          <textarea mdbInputDirective type="text" id="formobj" name="objetivo" [(ngModel)]="objetivo" class="md-textarea form-control"
+            rows="3"></textarea>
+          <label for="formobj">Objetivo</label>
+        </div>
         <!-- /Objetivo -->
 
         <!-- Educacion -->
         <div class="md-form">
-            <input mdbInputDirective type="number" name="edu" [(ngModel)]="edu" (change)="validateLength(edu,educacion,{periodo:'',institucion:'',titulo:''})"
-              id="form2" class="form-control">
-            <label for="form2" class="">Educación escolar (max. 5): </label>
-            <blockquote *ngIf="edu > 5" class="blockquote bq-danger">
-              <p class="bq-title">Máximo 5</p>
-            </blockquote>
+          <input mdbInputDirective type="number" name="edu" [(ngModel)]="edu" (change)="validateLength(edu,educacion,{periodo:'',institucion:'',titulo:''})"
+            id="form2" class="form-control">
+          <label for="form2" class="">Educación escolar (max. 5): </label>
+          <blockquote *ngIf="edu > 5" class="blockquote bq-danger">
+            <p class="bq-title">Máximo 5</p>
+          </blockquote>
+        </div>
+
+        <div *ngFor="let educ of educacion; let i = index;">
+          <div class="md-form">
+            <small>Periodo: {{i+1}}</small>
+            <input mdbInputDirective type="text" (keyup)="allocateValue($event,educacion,i,'periodo')" class="form-control">
+            <hr>
+            <small>Institución: {{i+1}}</small>
+            <input mdbInputDirective type="text" (keyup)="allocateValue($event,educacion,i,'institucion')" class="form-control">
+            <hr>
+            <small>Titulo o grado obtenido: {{i+1}}</small>
+            <input mdbInputDirective type="text" (keyup)="allocateValue($event,educacion,i,'titulo')" class="form-control">
           </div>
-  
-          <div *ngFor="let educ of educacion; let i = index;">
-            <div class="md-form">
-              <small>Periodo: {{i+1}}</small>
-              <input mdbInputDirective type="text" (keyup)="allocateValue($event,educacion,i,'periodo')" class="form-control">    
-              <hr>
-              <small>Institución: {{i+1}}</small>
-              <input mdbInputDirective type="text" (keyup)="allocateValue($event,educacion,i,'institucion')" class="form-control">    
-              <hr>
-              <small>Titulo o grado obtenido: {{i+1}}</small>
-              <input mdbInputDirective type="text" (keyup)="allocateValue($event,educacion,i,'titulo')" class="form-control">              
-            </div>
-          </div>
+        </div>
         <!-- /Educacion -->
 
         <!-- Experiencia -->
 
+        <div class="md-form">
+          <input mdbInputDirective type="number" name="experience" [(ngModel)]="experience" (change)="validateLength(experience,exp,{periodo:'',institucion:'',puesto:''})"
+            id="form2" class="form-control">
+          <label for="form2" class="">Experiencia laboral (max. 5): </label>
+          <blockquote *ngIf="experience > 5" class="blockquote bq-danger">
+            <p class="bq-title">Máximo 5</p>
+          </blockquote>
+        </div>
+
+        <div *ngFor="let xp of exp; let i = index;">
+          <div class="md-form">
+            <small>Periodo: {{i+1}}</small>
+            <input mdbInputDirective type="text" (keyup)="allocateValue($event,exp,i,'periodo')" class="form-control">
+            <hr>
+            <small>Institución: {{i+1}}</small>
+            <input mdbInputDirective type="text" (keyup)="allocateValue($event,exp,i,'institucion')" class="form-control">
+            <hr>
+            <small>Puesto: {{i+1}}</small>
+            <input mdbInputDirective type="text" (keyup)="allocateValue($event,exp,i,'puesto')" class="form-control">
+          </div>
+        </div>
+
         <!-- /Experiencia -->
 
         <!-- habilidades -->
+        <div class="md-form">
+          <input mdbInputDirective type="number" name="habi" [(ngModel)]="habi" (change)="validateLength(habi,habilidades,{habilidad:''})"
+            id="formhab" class="form-control">
+          <label for="formhab" class="">Escriba personalidades que te definan(max. 5): </label>
+          <blockquote *ngIf="habi > 5" class="blockquote bq-danger">
+            <p class="bq-title">Máximo 5</p>
+          </blockquote>
+        </div>
 
+        <div *ngFor="let habi of habilidades; let i = index;">
+          <div class="md-form">
+            <input mdbInputDirective type="text" (keyup)="allocateValue($event,habilidades,i,'habilidad')" class="form-control">
+            <label>Personalidad</label>
+          </div>
+        </div>
         <!-- /habilidades -->
 
+        <!-- Pasatiempos -->
+        <div class="md-form">
+            <input mdbInputDirective type="number" name="pas" [(ngModel)]="pas" (change)="validateLength(pas,pasatiempos,{pasatiempo:''})"
+              id="formhab" class="form-control">
+            <label for="formhab" class="">Escriba sus pasatiempos (max. 5): </label>
+            <blockquote *ngIf="pas > 5" class="blockquote bq-danger">
+              <p class="bq-title">Máximo 5</p>
+            </blockquote>
+          </div>
+  
+          <div *ngFor="let pas of pasatiempos; let i = index;">
+            <div class="md-form">
+              <input mdbInputDirective type="text" (keyup)="allocateValue($event,pasatiempos,i,'pasatiempo')" class="form-control">
+              <label>Habilidad</label>
+            </div>
+          </div>
+        <!-- /Pasatiempos -->
 
-
-       
+        <button mdbBtn (click)="downloadPDF()" type="button" color="danger" class="waves-light" mdbWavesEffect>
+          Exportar a PDF
+        </button>
       </form>
 
     </div>
 
 
-    <div class="col-8" style="overflow-y: scroll;">
+    <div  class="col-8" style="overflow-y: scroll;">
 
-      <div class="container">
+      <div id="contenido" #contenido class="container">
         <br>
         <!-- <div class="jumbotron"> -->
 
@@ -207,19 +262,19 @@
 
             <div>
 
-                <div *ngFor="let soft of hsoft">
-                  <br>
-                  <blockquote class="blockquote white-text">
-                    <p class="mb-0">{{soft.software}}</p>
-                  </blockquote>
-                  <div class="progress">
-                    <div [style.width.%]="soft.rango" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 25%"
-                      aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
+              <div *ngFor="let soft of hsoft">
+                <br>
+                <blockquote class="blockquote white-text">
+                  <p class="mb-0">{{soft.software}}</p>
+                </blockquote>
+                <div class="progress">
+                  <div [style.width.%]="soft.rango" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 25%"
+                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
+            </div>
 
-              <br>
+            <br>
             <!-- arreglo de habilidades de software max 5 -->
             <div class="w-100 p-1  #0288d1 light-blue darken-3">
               <h6 class="text-left white-text text-uppercase">
@@ -228,13 +283,13 @@
             </div>
             <div>
 
-                <div *ngFor="let pers of personalidad">
-                  <br>
-                  <blockquote class="blockquote white-text">
-                    <p class="mb-0" style="padding: .5rem 0;">{{pers.personalidad}}</p>
-                  </blockquote>                 
-                </div>
+              <div *ngFor="let pers of personalidad">
+                <br>
+                <blockquote class="blockquote white-text">
+                  <p class="mb-0" style="padding: .5rem 0;">{{pers.personalidad}}</p>
+                </blockquote>
               </div>
+            </div>
             <!-- arreglo de personalidades max 5 -->
 
             <br>
@@ -245,35 +300,67 @@
               <li>
 
                 <h4>
-                  <b class="text-uppercase">Objetivos</b>
+                  <b class="text-uppercase">Objetivo</b>
                 </h4>
-                <p>lorem ipsum</p>
+                <p>{{objetivo}}</p>
               </li>
               <li>
                 <h4>
                   <b class="text-uppercase">Educación</b>
                 </h4>
-                <p>lorem ipsum</p>
+
+                <div *ngFor="let educa of educacion">
+                  <small class="grey-text">{{educa.periodo}}</small>
+                  <br>
+                  <b>{{educa.institucion}}</b>
+                  <br>
+                  <small>{{educa.titulo}}</small>
+                  <hr>
+                </div>
 
               </li>
               <li>
                 <h4>
                   <b class="text-uppercase">Experiencia</b>
                 </h4>
-                <p>lorem ipsum</p>
+
+                <div *ngFor="let experienc of exp">
+                  <small class="grey-text">{{experienc.periodo}}</small>
+                  <br>
+                  <b>{{experienc.institucion}}</b>
+                  <br>
+                  <small>{{experienc.puesto}}</small>
+                  <hr>
+                </div>
+
               </li>
               <li>
                 <h4>
                   <b class="text-uppercase">Habilidades</b>
                 </h4>
-                <p>lorem ipsum</p>
+
+                <div *ngFor="let hb of habilidades">
+                  <small class="grey-text">
+                    <mdb-icon icon="check"></mdb-icon>{{hb.habilidad}}</small>
+                  <br>
+                </div>
+
               </li>
               <li>
                 <h4>
                   <b class="text-uppercase">Pasatiempos</b>
                 </h4>
                 <!-- max 5 -->
-                <p>lorem ipsum</p>
+                <div>
+                  <ul class="list-inline">
+                    <li class="list-inline-item" *ngFor="let pasati of pasatiempos">
+                        <div class="chip-dw" >
+                            {{pasati.pasatiempo}}
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+
               </li>
             </ul>
           </div>
@@ -286,7 +373,7 @@
 
       </div>
 
-
     </div>
   </div>
 </div>
+<br>

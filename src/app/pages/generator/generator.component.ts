@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-generator',
@@ -8,17 +9,24 @@ import { NgForm } from '@angular/forms';
 })
 export class GeneratorComponent implements OnInit {
 
+  public nombre:string = '';
+  public apellidos:string = '';
+  public direccion:string = '';
+  public contacto:string = '';
+  public fechanacimieno:string = '';
+  public objetivo:string = '';
   public img: string = '../../../assets/img/user.jpg';
+  
   public contactos: string[] = [];
-
   public idiomas: string[] = [];
   public hsoft: string[] = [];
   public personalidad: string[] = [];
   public exp: string[] = [];
   public educacion: string[] = [];
   public pasatiempos: string[] = [];
+  public habilidades: string[] = [];
 
-
+  @ViewChild('contenido') contenido: ElementRef;
 
 
   constructor() { }
@@ -48,7 +56,7 @@ export class GeneratorComponent implements OnInit {
       for (let index = 0; index < n; index++) {
         array[index] = { ...data };
       }
-    }else{
+    } else {
       array.length = 0;
     }
   }
@@ -56,6 +64,31 @@ export class GeneratorComponent implements OnInit {
   allocateValue(event: Event, array: any[], i: number, data: string) {
     const value = (<HTMLInputElement>event.srcElement).value;
     array[i][data] = value;
+
+  }
+
+  downloadPDF() {
+    // let doc = new jsPDF();
+    // let specialElementHandlers = {
+    //   '#editor':function(element,renderer){
+    //     return true;
+    //   }
+    // };
+
+    // let content = this.contenido.nativeElement;
+
+    // doc.fromHTML( content.innerHTML,15,15,{
+    //   'width':200,
+    //   'elementHandlers':specialElementHandlers
+    // },function (params) {
+    //   doc.save('test.pdf');
+    // });
+    html2canvas(document.getElementById('contenido')).then((canvas) => {
+      var img = canvas.toDataURL("image/png");
+      var doc = new jsPDF();
+      doc.addImage(img, 'JPEG', 5, 20);
+      doc.save(`${this.nombre}.pdf`);
+    });
 
   }
 
